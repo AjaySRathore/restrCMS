@@ -15,6 +15,10 @@
                 <tr>
                     <td>{{nutritionInfo.name}}</td>
                     <td>{{nutritionInfo.unit}}</td>
+                    <td><a href="{% url 'nutri-details' nutritionInfo.id  %}">
+                            Details
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
         </tbody>
