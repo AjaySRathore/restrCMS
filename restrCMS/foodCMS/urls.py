@@ -18,4 +18,6 @@ urlpatterns = [
         name="product-create"),
     path('products-details/<int:pk>',views.ProductsDetailView.as_view(),
         name="products-details"),
+    path('products/delete/<int:pk>',views.ProductsDeleteView.as_view(),
+        name="products-delete"),
 ]

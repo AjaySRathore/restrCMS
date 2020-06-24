@@ -99,3 +99,9 @@ class ProductsDetailView(DetailView):
             'nutri_directory': nutri_directory
         })
         return kwargs
+
+@method_decorator(login_required, name="dispatch")
+class ProductsDeleteView(DeleteView):
+    model = Products
+    template_name = 'foodCMS/products/product_confirm_delete.html'
+    success_url = reverse_lazy("products-list")
