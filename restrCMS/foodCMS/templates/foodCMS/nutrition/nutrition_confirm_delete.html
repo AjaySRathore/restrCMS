@@ -1,0 +1,14 @@
+{% extends "../base.html" %}
+
+{% block maincontent %}
+<div class="jumbotron">
+    <form method="post">
+        <div class="form-group">
+            {% csrf_token %}
+            <p class="alert alert-warning">Are you sure you want to delete
+                "{{ object.name }}"?</p>
+            <input type="submit" value="Confirm">
+        </div>
+    </form>
+</div>
+{% endblock %}

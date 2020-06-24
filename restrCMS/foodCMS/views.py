@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView,UpdateView
-from django.urls import reverse
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from django.urls import reverse, reverse_lazy
 
 from foodCMS.models import NutritionInfo,NutriDirectory,Products
 
@@ -34,3 +34,9 @@ class NutritionInfoUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('nutri-details', kwargs={'pk': self.object.pk})
+
+@method_decorator(login_required, name="dispatch")
+class NutritionInfoDeleteView(DeleteView):
+    model = NutritionInfo
+    template_name = 'foodCMS/nutrition/nutrition_confirm_delete.html'
+    success_url = reverse_lazy("nutri-info-list")

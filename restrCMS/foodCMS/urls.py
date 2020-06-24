@@ -10,4 +10,6 @@ urlpatterns = [
         name="nutri-create"),
     path('nutri-details/update/<int:pk>',views.NutritionInfoUpdateView.as_view(),
         name="nutri-update"),
+    path('nutri-details/delete/<int:pk>',views.NutritionInfoDeleteView.as_view(),
+        name="nutri-delete")
 ]

@@ -23,6 +23,10 @@
                             Update
                         </a>
                     </td>
+                    <td><a class="btn btn-danger" href="{% url 'nutri-delete' nutritionInfo.id  %}">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
         </tbody>
