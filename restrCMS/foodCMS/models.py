@@ -24,9 +24,13 @@ class Products(models.Model):
        description -- description of the product with 1000 char limit
        status -- boolean status to indicate product active or not.
     """
+    PROD_STATUS = (
+        ('A','ACTIVE'),
+        ('INA','INACTIVE'),
+    )
     name = models.CharField(max_length=200,verbose_name="Name")
     description = models.CharField(max_length=1000, verbose_name="Description")
-    status = models.BooleanField(default=True,verbose_name="Active")
+    status = models.CharField(max_length=3,choices=PROD_STATUS,verbose_name="Active")
 
     def __str__(self):
         return self.name
