@@ -5,9 +5,15 @@
     <h1>Name of Nutrition: {{ object.name }}</h1>
     <h2>Unit of Measurement: {{ object.description }}</h2>
     <h2>Unit of Measurement: {{ object.status }}</h2>
-    {% for info in nutri_directory %}
-        <h3>{{ info }}</h3>
-    {% endfor %}
+    <hr>
+    <h2>Nutrition Info</h2>
+    <div class="card">
+        <div class="card-body">
+            {% for info in nutri_directory %}
+                <h3>{{ info }}</h3>
+            {% endfor %}
+        </div>
+    </div>
 
 </div>
 {% endblock %}

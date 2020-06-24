@@ -80,6 +80,13 @@ class ProductsCreateView(CreateView):
 class ProductsListView(ListView):
     model = Products
     template_name = 'foodCMS/products/prodcutslist.html'
+    def get_context_data(self, **kwargs):
+        kwargs = super(ProductsListView, self).get_context_data(**kwargs)
+        nutri_directory = NutriDirectory.objects.all()
+        kwargs.update({
+            'nutri_directory': nutri_directory
+        })
+        return kwargs
 
 @method_decorator(login_required, name="dispatch")
 class ProductsDetailView(DetailView):

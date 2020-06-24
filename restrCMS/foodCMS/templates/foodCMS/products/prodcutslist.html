@@ -8,6 +8,7 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
+                <th scope="col">Nutrition</th>
                 <th scope="col">Active</th>
             </tr>
         </thead>
@@ -16,6 +17,13 @@
                 <tr>
                     <td>{{product.name}}</td>
                     <td>{{product.description}}</td>
+                    <td>
+                        {% for info in nutri_directory %}
+                                {% if info.prod_id == product %}
+                                    {{info}}<br>
+                                {% endif %}
+                        {% endfor %}
+                    </td>
                     <td>{{product.status}}</td>
                     <td><a class="btn btn-primary" href="{% url 'products-details' product.id  %}">
                             Details
