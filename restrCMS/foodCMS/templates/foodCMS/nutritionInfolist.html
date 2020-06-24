@@ -15,8 +15,12 @@
                 <tr>
                     <td>{{nutritionInfo.name}}</td>
                     <td>{{nutritionInfo.unit}}</td>
-                    <td><a href="{% url 'nutri-details' nutritionInfo.id  %}">
+                    <td><a class="btn btn-primary" href="{% url 'nutri-details' nutritionInfo.id  %}">
                             Details
+                        </a>
+                    </td>
+                    <td><a class="btn btn-primary" href="{% url 'nutri-update' nutritionInfo.id  %}">
+                            Update
                         </a>
                     </td>
                 </tr>
