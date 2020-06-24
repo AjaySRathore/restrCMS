@@ -11,5 +11,11 @@ urlpatterns = [
     path('nutri-details/update/<int:pk>',views.NutritionInfoUpdateView.as_view(),
         name="nutri-update"),
     path('nutri-details/delete/<int:pk>',views.NutritionInfoDeleteView.as_view(),
-        name="nutri-delete")
+        name="nutri-delete"),
+    path('products-list/', views.ProductsListView.as_view(),
+        name='products-list'),
+    path('products/create',views.ProductsCreateView.as_view(),
+        name="product-create"),
+    path('products-details/<int:pk>',views.ProductsDetailView.as_view(),
+        name="products-details"),
 ]

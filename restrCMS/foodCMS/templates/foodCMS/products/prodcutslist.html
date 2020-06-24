@@ -1,0 +1,29 @@
+{% extends "../base.html" %}
+
+{% block maincontent %}
+<h1>List of Nutrition Info</h1>
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Active</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for product in object_list %}
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.status}}</td>
+                    <td><a class="btn btn-primary" href="{% url 'products-details' product.id  %}">
+                            Details
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+</table>
+
+{% endblock %}
