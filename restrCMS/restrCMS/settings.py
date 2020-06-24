@@ -25,7 +25,7 @@ SECRET_KEY = 'vp_torjg*(rd=#a#&6=+-y_*5e0%t&fv$i)imu%i*73m%14r=3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver','127.0.0.1']
 
 
 # Application definition
