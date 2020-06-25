@@ -1,7 +1,32 @@
 {% extends "../base.html" %}
 
 {% block maincontent %}
-<h1>List of Nutrition Info</h1>
+<nav class="nav justify-content-center">
+    <ul class="nav">
+        <li class="nav-item" style="margin-right:30px">
+            <form method="get"/>
+                <input type="text" name='name'></input>
+                <input type="submit" value="Filter by Name" class="btn btn-primary"></input>
+            </form>
+        </li>
+        <li class="nav-item">
+            <form method="get"/>
+                <select name="status" id="statusSelect">
+                    <option value="none">-----</option>
+                    <option value="A">ACTIVE</option>
+                    <option value="INA">INACTIVE</option>
+                </select>
+                <input type="submit" value="Filter by status" class="btn btn-primary"></input>
+            </form>
+        </li>
+        <li class="nav-item" style="margin-right:30px">
+            <form method="get"/>
+                <input type="submit" value="reset" name="submit" class="btn btn-primary"></input>
+            </form>
+        </li>
+    </ul>
+</nav>
+<h1>List of Products</h1>
 <table class="table">
     <tr>
         <thead class="thead-light">

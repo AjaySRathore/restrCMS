@@ -12,7 +12,7 @@ from foodCMS.forms import *
 @method_decorator(login_required, name="dispatch")
 class NutritionInfoListView(ListView):
     model = NutritionInfo
-    template_name = 'foodCMS/nutritionInfolist.html'
+    template_name = 'foodCMS/nutrition/nutritionInfolist.html'
 
 @method_decorator(login_required, name="dispatch")
 class NutritionInfoDetailView(DetailView):
@@ -80,6 +80,18 @@ class ProductsCreateView(CreateView):
 class ProductsListView(ListView):
     model = Products
     template_name = 'foodCMS/products/prodcutslist.html'
+    def get_queryset(self):
+        status_filter = self.request.GET.get('status', 'none')
+        name_filter = self.request.GET.get('name','none')
+        if status_filter != 'none':
+            context = Products.objects.filter(status=status_filter)
+        elif name_filter != 'none':
+            context = Products.objects.filter(name__icontains=name_filter)
+        else:
+            context = Products.objects.all()
+        return context
+
+
     def get_context_data(self, **kwargs):
         kwargs = super(ProductsListView, self).get_context_data(**kwargs)
         nutri_directory = NutriDirectory.objects.all()

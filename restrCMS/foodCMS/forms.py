@@ -17,6 +17,6 @@ class NutriDirectoryForm(forms.ModelForm):
 NutriDirectoryFormSet = inlineformset_factory(
     Products, NutriDirectory, form=NutriDirectoryForm,
     fields=['nutri_info_id', 'value'],
-    extra=len(NutritionInfo.objects.all()), 
+    extra=len(NutritionInfo.objects.all()),
     can_delete=False
     )
