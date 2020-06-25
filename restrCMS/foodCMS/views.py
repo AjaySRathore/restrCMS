@@ -105,3 +105,50 @@ class ProductsDeleteView(DeleteView):
     model = Products
     template_name = 'foodCMS/products/product_confirm_delete.html'
     success_url = reverse_lazy("products-list")
+
+@method_decorator(login_required, name="dispatch")
+class ProductsUpdateView(UpdateView):
+    model = Products
+    form_class = ProductsForm
+    template_name = 'foodCMS/products/product_update_form.html'
+
+    def get_object(self, queryset=None):
+        self.object = super(ProductsUpdateView, self).get_object()
+        return self.object
+
+    def get(self, request,*args,**kwargs):
+        self.object = self.get_object()
+        form= ProductsForm(instance=self.object)
+        nutri_form = NutriDirectoryFormSet(instance=self.object)
+        return self.render_to_response(
+                                    self.get_context_data(
+                                                form=form,
+                                                nutri_form=nutri_form))
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = ProductsForm(data=self.request.POST,instance=self.object)
+        nutri_form = NutriDirectoryFormSet(data=self.request.POST,instance=self.object)
+        if form.is_valid():
+            print('form is valid')
+        if nutri_form.is_valid():
+            print('nutri_form is valid')
+        else:
+            print(nutri_form)
+        if (form.is_valid()):
+            return self.form_valid(form,nutri_form)
+        else:
+            return self.form_invalid(form,nutri_form)
+
+    def form_valid(self, form, nutri_form):
+        self.object = form.save()
+        nutri_form.instance = self.object
+        nutri_form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, nutri_form):
+        return self.render_to_response(
+            self.get_context_data(form=form, nutri_form=nutri_form))
+
+    def get_success_url(self):
+        return reverse('products-list')

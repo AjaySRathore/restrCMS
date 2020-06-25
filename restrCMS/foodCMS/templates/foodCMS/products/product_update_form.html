@@ -1,0 +1,32 @@
+{% extends "../base.html" %}
+
+{% block maincontent %}
+<div class="jumbotron">
+    <h1>Update Product Here</h1>
+       <form method="post">
+           {% csrf_token %}
+           <fieldset>
+               <div>
+                   {{ form.as_p }}
+                </div>
+           </fieldset>
+           <fieldset>
+               <legend>Update Nutrition Info</legend>
+               {{ nutri_form.management_form }}
+               {{ nutri_form.non_form_errors }}
+               {% for form in nutri_form %}
+
+                   <div class="inline {{ ingredient_form.prefix }}">
+                       {{ form.nutri_info_id.errors }}
+                       {{ form.nutri_info_id }}
+                       {{ form.value.errors }}
+                       {{ form.value }}
+                   </div>
+               {% endfor %}
+           </fieldset>
+           <input type="submit" value="Update" class="submit" />
+       </form>
+</div>
+
+
+{% endblock %}
