@@ -5,9 +5,14 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse, reverse_lazy
+from django.views.generic import TemplateView
 
 from foodCMS.models import NutritionInfo,NutriDirectory,Products
 from foodCMS.forms import *
+
+@method_decorator(login_required, name="dispatch")
+class IndexView(TemplateView):
+    template_name = 'foodCMS/index.html'
 
 @method_decorator(login_required, name="dispatch")
 class NutritionInfoListView(ListView):

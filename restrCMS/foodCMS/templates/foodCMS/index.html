@@ -1,0 +1,15 @@
+{% extends "./base.html" %}
+
+{% block maincontent %}
+<div class="jumbotron">
+    <a class="btn btn-primary" href="{% url 'nutri-info-list' %}">
+        Nutrition Info List</a>
+    <a class="btn btn-primary" href="{% url 'nutri-create' %}">
+        Create Nutrition</a>
+
+    <a class="btn btn-primary" href="{% url 'products-list' %}">
+        Products List</a>
+    <a class="btn btn-primary" href="{% url 'product-create' %}">
+        Create Product</a>
+</div>
+{% endblock %}
